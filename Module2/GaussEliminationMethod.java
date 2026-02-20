@@ -4,45 +4,24 @@ import java.util.Scanner;
 
 public class GaussEliminationMethod
 {
-    static void readMatrixA(Scanner obj, double[][] A)
+    static void readMatrix(Scanner obj, double[][] A, String title,int col)
     {
-        System.out.println("Enter the matrix formed as A");
+        System.out.printf("Enter Elements of %s (M)",title);
         for (int i = 0; i < 3; i++)
-            for (int j = 0; j < 3; j++)
+            for (int j = 0; j < col; j++)
             {
-                System.out.printf("A%d%d: ", i + 1, j + 1);
+                System.out.printf("M%d%d: ", i + 1, j + 1);
                 A[i][j] = obj.nextDouble();
             }
     }
 
-    static void readMatrixB(Scanner obj, double[][] B)
-    {
-        System.out.println("\nEnter the matrix formed as B");
-        for (int i = 0; i < 3; i++)
-        {
-            System.out.printf("B%d1: ", i + 1);
-            B[i][0] = obj.nextDouble();
-        }
-    }
-
-    static void printMatrix(String title, double[][] M)
+    static void printMatrix(String title, double[][] M,int col)
     {
         System.out.println("\n" + title);
         for (int i = 0; i < 3; i++)
         {
-            for (int j = 0; j < 3; j++)
+            for (int j = 0; j < col; j++)
                 System.out.printf("%8.4f  ", M[i][j]);
-            System.out.println();
-        }
-    }
-
-    static void printMatrixB(double[][] M)
-    {
-        System.out.println("\n" + "Matrix B");
-        for (int i = 0; i < 3; i++)
-        {
-            for (int j = 0; j < 1; j++)
-                System.out.printf("%.4f  ", M[i][j]);
             System.out.println();
         }
     }
@@ -91,17 +70,17 @@ public class GaussEliminationMethod
         double[][] A = new double[3][3];
         double[][] B = new double[3][1];
 
-        readMatrixA(obj, A);
-        readMatrixB(obj, B);
+        readMatrix(obj, A, "Matrix A", 3);
+        readMatrix(obj, B,  "Matrix B", 1);
 
         gaussElimination(A, B);
 
         double[][] X = new double[3][1];
         backSubstitution(A, B, X);
 
-        printMatrix("Matrix A", A);
-        printMatrixB(B);
-        printMatrix("Upper Triangular Matrix (After Elimination):", A);
+        printMatrix("Matrix A", A,3);
+        printMatrix("Matrix B",B,1);
+        printMatrix("Upper Triangular Matrix (After Elimination):", A,3);
         printSolution(X);
     }
 }

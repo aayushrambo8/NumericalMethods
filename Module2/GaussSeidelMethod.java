@@ -4,25 +4,15 @@ import java.util.Scanner;
 
 public class GaussSeidelMethod
 {
-    static void readMatrixA(Scanner obj, double[][] A)
+    static void readMatrix(Scanner obj, double[][] A, String title,int col)
     {
-        System.out.println("Enter the matrix formed as A");
+        System.out.printf("Enter Elements of %s (M)",title);
         for (int i = 0; i < 3; i++)
-            for (int j = 0; j < 3; j++)
+            for (int j = 0; j < col; j++)
             {
-                System.out.printf("A%d%d: ", i + 1, j + 1);
+                System.out.printf("M%d%d: ", i + 1, j + 1);
                 A[i][j] = obj.nextDouble();
             }
-    }
-
-    static void readMatrixB(Scanner obj, double[][] B)
-    {
-        System.out.println("\nEnter the matrix formed as B");
-        for (int i = 0; i < 3; i++)
-        {
-            System.out.printf("B%d1: ", i + 1);
-            B[i][0] = obj.nextDouble();
-        }
     }
 
     static void readInitialGuess(Scanner obj, double[][] X)
@@ -65,10 +55,8 @@ public class GaussSeidelMethod
                 }
                 double sum = B[i][0];
                 for (int j = 0; j < 3; j++)
-                {
                     if (j != i)
                         sum -= A[i][j] * X[j][0];
-                }
                 X[i][0] = sum / A[i][i];
             }
 
@@ -94,14 +82,16 @@ public class GaussSeidelMethod
         double[][] B = new double[3][1];
         double[][] X = new double[3][1];
 
-        readMatrixA(obj, A);
-        readMatrixB(obj, B);
+        readMatrix(obj, A,"Matrix A",3);
+        readMatrix(obj, B,"Matrix B",1);
         readInitialGuess(obj, X);
 
-        int maxIter = 50;
-        double tol = 1e-6;
+        System.out.println("Enter no. of required Decimal Places and max Iterations");
+        int epsilon = obj.nextInt();
+        int maxIteration = obj.nextInt();
+        double tolerance = Math.pow(10,-epsilon);
 
-        seidelMethod(A, B, X, maxIter, tol);
+        seidelMethod(A, B, X, maxIteration, tolerance);
         printSolution(X);
     }
 }
