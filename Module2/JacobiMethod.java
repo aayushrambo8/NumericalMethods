@@ -101,7 +101,6 @@ public class JacobiMethod
         readMatrixA(obj, A);
         readMatrixB(obj, B);
 
-        // 🔹 NEW: ask for initial guesses
         readInitialGuess(obj, X);
 
         int maxIter = 50;
