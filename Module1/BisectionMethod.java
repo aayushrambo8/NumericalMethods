@@ -22,7 +22,7 @@ public class BisectionMethod
         {
             previousMiddle = middle;
             middle = (leftInterval + rightInterval) / 2;
-            System.out.printf("%d\t\t\t%.15f\t%.15f\t%.15f\t%.15f\n",
+            System.out.printf("%d.\t\t\t%.15f\t%.15f\t%.15f\t%.15f\n",
                     i, leftInterval, rightInterval, middle, equation(X, middle));
             if (i > 1 && Math.abs(middle - previousMiddle) < epsilon)
                 break;
