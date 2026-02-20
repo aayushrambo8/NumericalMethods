@@ -25,7 +25,6 @@ public class JacobiMethod
         }
     }
 
-    // 🔹 NEW: Read initial guesses
     static void readInitialGuess(Scanner obj, double[][] X)
     {
         System.out.println("\nEnter initial guesses for x, y and z:");
