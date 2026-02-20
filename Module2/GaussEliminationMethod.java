@@ -4,9 +4,9 @@ import java.util.Scanner;
 
 public class GaussEliminationMethod
 {
-    static void readMatrix(Scanner obj, double[][] A, String title,int col)
+    static void readMatrix(Scanner obj, double[][] A, String title, int col)
     {
-        System.out.printf("Enter Elements of %s (M)",title);
+        System.out.printf("Enter Elements of %s (M)", title);
         for (int i = 0; i < 3; i++)
             for (int j = 0; j < col; j++)
             {
@@ -15,7 +15,7 @@ public class GaussEliminationMethod
             }
     }
 
-    static void printMatrix(String title, double[][] M,int col)
+    static void printMatrix(String title, double[][] M, int col)
     {
         System.out.println("\n" + title);
         for (int i = 0; i < 3; i++)
@@ -71,16 +71,16 @@ public class GaussEliminationMethod
         double[][] B = new double[3][1];
 
         readMatrix(obj, A, "Matrix A", 3);
-        readMatrix(obj, B,  "Matrix B", 1);
+        readMatrix(obj, B, "Matrix B", 1);
 
         gaussElimination(A, B);
 
         double[][] X = new double[3][1];
         backSubstitution(A, B, X);
 
-        printMatrix("Matrix A", A,3);
-        printMatrix("Matrix B",B,1);
-        printMatrix("Upper Triangular Matrix (After Elimination):", A,3);
+        printMatrix("Matrix A", A, 3);
+        printMatrix("Matrix B", B, 1);
+        printMatrix("Upper Triangular Matrix (After Elimination):", A, 3);
         printSolution(X);
     }
 }

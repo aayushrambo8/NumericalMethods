@@ -4,9 +4,9 @@ import java.util.Scanner;
 
 public class GaussSeidelMethod
 {
-    static void readMatrix(Scanner obj, double[][] A, String title,int col)
+    static void readMatrix(Scanner obj, double[][] A, String title, int col)
     {
-        System.out.printf("Enter Elements of %s (M)",title);
+        System.out.printf("Enter Elements of %s (M)", title);
         for (int i = 0; i < 3; i++)
             for (int j = 0; j < col; j++)
             {
@@ -67,7 +67,7 @@ public class GaussSeidelMethod
                 err = Math.max(err, Math.abs(X[i][0] - xOld[i][0]));
             if (err < tol)
             {
-                System.out.printf("\nConverged in %d iterations.\n",iter);
+                System.out.printf("\nConverged in %d iterations.\n", iter);
                 break;
             }
         }
@@ -82,14 +82,14 @@ public class GaussSeidelMethod
         double[][] B = new double[3][1];
         double[][] X = new double[3][1];
 
-        readMatrix(obj, A,"Matrix A",3);
-        readMatrix(obj, B,"Matrix B",1);
+        readMatrix(obj, A, "Matrix A", 3);
+        readMatrix(obj, B, "Matrix B", 1);
         readInitialGuess(obj, X);
 
         System.out.println("Enter no. of required Decimal Places and max Iterations");
         int epsilon = obj.nextInt();
         int maxIteration = obj.nextInt();
-        double tolerance = Math.pow(10,-epsilon);
+        double tolerance = Math.pow(10, -epsilon);
 
         seidelMethod(A, B, X, maxIteration, tolerance);
         printSolution(X);
