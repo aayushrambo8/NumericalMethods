@@ -26,17 +26,6 @@ public class LUDecompositionMethod
         }
     }
 
-    static void printMatrixB(double[][] M)
-    {
-        System.out.println("\n" + "Matrix B");
-        for (int i = 0; i < 3; i++)
-        {
-            for (int j = 0; j < 1; j++)
-                System.out.printf("%8.4f  ", M[i][j]);
-            System.out.println();
-        }
-    }
-
     static void printSolution(double[][] X)
     {
         System.out.println("\n" + "Solution of AX = B using LU Decomposition:");
@@ -105,6 +94,8 @@ public class LUDecompositionMethod
 
         readMatrix(obj, A, "Matrix A", 3);
         readMatrix(obj, B, "Matrix B", 1);
+        printMatrix("Matrix A", A, 3);
+        printMatrix("Matrix B", B, 1);
         decomposeLU(A, L, U);
 
         double[][] Y = new double[3][1];
@@ -113,8 +104,6 @@ public class LUDecompositionMethod
         double[][] X = new double[3][1];
         backSubstitution(U, Y, X);
 
-        printMatrix("Matrix A", A, 3);
-        printMatrix("Matrix B", B, 1);
         printMatrix("Lower Triangular Matrix L:", L, 3);
         printMatrix("Upper Triangular Matrix U:", U, 3);
         printSolution(X);
