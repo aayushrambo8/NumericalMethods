@@ -6,7 +6,7 @@ public class GaussSeidelMethod
 {
     static void readMatrix(Scanner obj, double[][] A, String title, int col)
     {
-        System.out.printf("Enter Elements of %s (M)", title);
+        System.out.printf("Enter Elements of %s (M)\n", title);
         for (int i = 0; i < 3; i++)
             for (int j = 0; j < col; j++)
             {
