@@ -9,7 +9,7 @@ public class LagrangeInterpolationMethod
         double fx = 0;
         for(int i = 0; i<n;i++)
         {
-            int p = 1;
+            double p = 1;
             for(int j = 0;j<n;j++)
                 if(i!=j)
                     p*=(number-x[j])/(x[i]-x[j]);
